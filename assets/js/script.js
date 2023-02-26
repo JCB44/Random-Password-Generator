@@ -36,18 +36,18 @@ if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercas
 // b. lowercase, uppercase, special characters       #/#
 //2. validate the input
 //3. generate passwrod
-
-for (var i = 0; i < enter; i++){
+var password = ""
+for (var i = 0; i < numberInput; i++){
   var randomNum = Math.floor(Math.random()*alpha.length)
-console.log (randomNum)
 var randomChar = alpha[randomNum]
-console.log (randomChar)
+password = password + randomChar
+
 }
 
 
 
 //4. display password to the page
-  return "Output"
+  return password
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
