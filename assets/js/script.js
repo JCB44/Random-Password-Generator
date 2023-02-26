@@ -1,4 +1,3 @@
-// Assignment code here
 var numberInput
 var confirmNumber;
 var confirmCharacter;
@@ -8,9 +7,10 @@ var confirmLowercase;
 character = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 // Numeric characters
 number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-// Alphabetical characters
+// Alphabetical lowercase characters
 alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-// caps = alpha.toUpperCase()
+// Alphabetical uppercase characters
+capsAlpha = alpha.join("").toUpperCase().split("")
 function generatePassword(){
   console.log("button press")
 var numberInput = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"));
@@ -30,23 +30,27 @@ if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercas
   choices = alert("You must choose atleast one option");
   return;
 }
-
-//1. promt user with criteria                        #/#
-// a. password length                                #/#
-// b. lowercase, uppercase, special characters       #/#
-//2. validate the input
-//3. generate passwrod
-var password = ""
-for (var i = 0; i < numberInput; i++){
-  var randomNum = Math.floor(Math.random()*alpha.length)
-var randomChar = alpha[randomNum]
-password = password + randomChar
-
+var userchoice = []
+if (confirmNumber){
+  userchoice = userchoice.concat (number)
+}
+if (confirmCharacter){
+  userchoice = userchoice.concat (character)
+}
+if (confirmUppercase){
+  userchoice = userchoice.concat (capsAlpha)
+}
+if (confirmLowercase){
+  userchoice = userchoice.concat (alpha)
 }
 
+var password = ""
+for (var i = 0; i < numberInput; i++){
+  var randomNum = Math.floor(Math.random()*userchoice.length)
+var randomChar = userchoice[randomNum]
+password = password + randomChar
+}
 
-
-//4. display password to the page
   return password
 }
 // Get references to the #generate element
